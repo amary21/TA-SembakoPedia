@@ -1,9 +1,13 @@
-package com.rivaldomathindas.sembakopedia
+package com.rivaldomathindas.sembakopedia.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import com.rivaldomathindas.sembakopedia.R
+import com.rivaldomathindas.sembakopedia.fragment.FirstFragment
+import com.rivaldomathindas.sembakopedia.fragment.SecondFragment
+import com.rivaldomathindas.sembakopedia.fragment.ThirdFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,17 +27,20 @@ class MainActivity : AppCompatActivity() {
         navigationView.setOnClickMenuListener {
             when (it.id) {
                 1 -> {
-                    val firstFragment = FirstFragment()
+                    val firstFragment =
+                        FirstFragment()
                     openFragment(firstFragment)
                     return@setOnClickMenuListener
                 }
                 2 -> {
-                    val secondFragment = SecondFragment()
+                    val secondFragment =
+                        SecondFragment()
                     openFragment(secondFragment)
                     return@setOnClickMenuListener
                 }
                 3 -> {
-                    val thirdFragment = ThirdFragment()
+                    val thirdFragment =
+                        ThirdFragment()
                     openFragment(thirdFragment)
                     return@setOnClickMenuListener
                 }
@@ -42,9 +49,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addNavigationView() {
-        navigationView.add(MeowBottomNavigation.Model(1, R.drawable.ic_dashboard_black_24dp))
-        navigationView.add(MeowBottomNavigation.Model(2, R.drawable.ic_notifications_black_24dp))
-        navigationView.add(MeowBottomNavigation.Model(3, R.drawable.ic_person_black_24dp))
+        navigationView.add(MeowBottomNavigation.Model(1,
+            R.drawable.ic_home
+        ))
+        navigationView.add(MeowBottomNavigation.Model(2,
+            R.drawable.ic_statistics
+        ))
+        navigationView.add(MeowBottomNavigation.Model(3,
+            R.drawable.ic_settings
+        ))
     }
 
     private fun openFragment(fragment: Fragment) {
