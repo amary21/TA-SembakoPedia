@@ -11,4 +11,16 @@
     <color name="semiBlackTransparent">#44415A6B</color>
     <color name="softBlue">#8AD7F8</color>
     <color name="darkOrange">#F7B64C</color>
+
+
+    <color name="inactiveColor">#8c8c8c</color>
+    <color name="secondaryText">#D9757575</color>
+    <color name="textGray">#616161</color>
+    <color name="primaryText">#212121</color>
+    <color name="timeColor">#A6616161</color>
+    <color name="light_background">#f2f2f2</color>
+    <color name="rvDivider">#CCe0e0e0</color>
+    <color name="lightGray">#e6e6e6</color>
+    <color name="pink">#ec407a</color>
+    <color name="red">#e53935</color>
 </resources>

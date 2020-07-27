@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">SembakoPedia</string>
-    <string name="no_description">No Description</string>
+    <string name="image">Image</string>
+    <string name="title">Title</string>
+    <string name="location">Location</string>
+    <string name="ratting">Ratting</string>
+    <string name="price">Price</string>
+    <string name="review">Review</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="not_a_member_yet">Not a member yet?</string>
+    <string name="register">Register</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
 </resources>
