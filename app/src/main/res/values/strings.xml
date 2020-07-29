@@ -12,7 +12,7 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="not_a_member_yet">Not a member yet?</string>
     <string name="register">Register</string>
-    <string name="sign_up">SIGN UP</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

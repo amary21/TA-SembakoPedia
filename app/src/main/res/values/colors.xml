@@ -23,4 +23,16 @@
     <color name="lightGray">#e6e6e6</color>
     <color name="pink">#ec407a</color>
     <color name="red">#e53935</color>
+
+    <color name="mainColor1">#FFA5A3</color>
+    <color name="mainColor2">#ECFFA8</color>
+    <color name="mainColor3">#BBFFBA</color>
+    <color name="mainColor4">#ADF0FF</color>
+
+    <color name="bgMainColor1">#FFEAD4</color>
+    <color name="bgMainColor2">#F9FED5</color>
+    <color name="bgMainColor3">#E2FECE</color>
+
+
+    <color name="textInputLayout">#96ffffff</color>
 </resources>

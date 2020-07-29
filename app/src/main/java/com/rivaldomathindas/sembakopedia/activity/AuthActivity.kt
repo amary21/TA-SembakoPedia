@@ -43,7 +43,7 @@ class AuthActivity : BaseActivity() {
             supportFragmentManager.popBackStackImmediate()
         } else {
             if (doubleBackToExit) {
-                super.onBackPressed()
+                super.finish()
             } else {
                 toast("Tap back again to exit")
                 doubleBackToExit = true
@@ -51,7 +51,5 @@ class AuthActivity : BaseActivity() {
                 Handler().postDelayed({doubleBackToExit = false}, 1500)
             }
         }
-
     }
-
 }
