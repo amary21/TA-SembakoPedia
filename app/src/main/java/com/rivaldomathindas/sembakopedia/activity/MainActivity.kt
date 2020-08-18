@@ -82,7 +82,7 @@ class MainActivity : BaseActivity() {
                         openFragment(FirstFragment())
                         navigationView.show(1)
                     }
-                    market -> toast("Clicked My Market")
+                    market -> launchActivity(MyUploadsActivity::class.java)
                     statistics -> {
                         openFragment(SecondFragment())
                         navigationView.show(2)
@@ -175,6 +175,18 @@ class MainActivity : BaseActivity() {
                 })
             )
         },2000)
+    }
+
+    private fun launchActivity(intentClass: Class<*>) {
+        val intent = Intent(this, intentClass)
+        startActivity(intent)
+        overridePendingTransition(R.anim.enter_b, R.anim.exit_a)
+
+        Handler().postDelayed({
+            drawer.closeDrawer()
+            drawer.setSelection(0)
+        }, 300)
+
     }
 
     private fun openFragment(fragment: Fragment) {

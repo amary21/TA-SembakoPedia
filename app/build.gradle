@@ -94,6 +94,15 @@ dependencies {
     //Alert Dialog
     implementation 'com.airbnb.android:lottie:3.0.7'
     implementation 'com.github.mayuce:LottieAlertDialog:1.1'
+
+    //FAB
+    implementation 'com.github.clans:fab:1.6.4'
+
+
+    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
+    implementation 'com.github.captain-miao:optroundcardview:1.0.0'
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+    implementation 'com.synnapps:carouselview:0.1.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
