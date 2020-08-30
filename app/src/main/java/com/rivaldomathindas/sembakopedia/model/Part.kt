@@ -19,5 +19,4 @@ data class Part(
         var image: String? = null,
         var images: MutableMap<String, String> = mutableMapOf(),
         var holderImage: Int? = null
-): Serializable {
-}
+): Serializable

@@ -197,6 +197,16 @@
             android:text="DELETE PART"
             android:visibility="gone"/>
 
+        <Button
+            android:id="@+id/contactSeller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/wire_button"
+            android:textColor="@color/colorPrimary"
+            android:text="Contact seller"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

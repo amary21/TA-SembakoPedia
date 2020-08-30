@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +20,8 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
 import com.rivaldomathindas.sembakopedia.R
-import com.rivaldomathindas.sembakopedia.fragment.FirstFragment
+import com.rivaldomathindas.sembakopedia.fragment.HomeFragment
+import com.rivaldomathindas.sembakopedia.fragment.MyUploadsPartsFragment
 import com.rivaldomathindas.sembakopedia.fragment.SecondFragment
 import com.rivaldomathindas.sembakopedia.fragment.ThirdFragment
 import com.rivaldomathindas.sembakopedia.network.BaseActivity
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity() {
 
         addNavigationView()
         navigationView.show(1)
-        openFragment(FirstFragment())
+        openFragment(HomeFragment())
         setupDrawer()
         setupBottomNavigation()
     }
@@ -66,6 +66,7 @@ class MainActivity : BaseActivity() {
 
         val home = SecondaryDrawerItem().withIdentifier(0).withName("Home").withIcon(R.drawable.home)
         val market = SecondaryDrawerItem().withIdentifier(1).withName("My Market").withIcon(R.drawable.icon_alamat)
+        
         val statistics = SecondaryDrawerItem().withIdentifier(2).withName("Statistics").withIcon(R.drawable.statistics)
         val chat = SecondaryDrawerItem().withIdentifier(3).withName("Chats").withIcon(R.drawable.icon_komentar)
         val settings = SecondaryDrawerItem().withIdentifier(4).withName("Settings").withIcon(R.drawable.gear)
@@ -79,7 +80,7 @@ class MainActivity : BaseActivity() {
             .withOnDrawerItemClickListener { _, _, drawerItem ->
                 when(drawerItem) {
                     home -> {
-                        openFragment(FirstFragment())
+                        openFragment(HomeFragment())
                         navigationView.show(1)
                     }
                     market -> launchActivity(MyUploadsActivity::class.java)
@@ -91,8 +92,8 @@ class MainActivity : BaseActivity() {
                         openFragment(ThirdFragment())
                         navigationView.show(3)
                     }
-                    about -> toast("Clicked About")
-                    settings -> toast("Clicked Settings")
+                    about -> launchActivity(MyOrdersActivity::class.java)
+                    settings -> launchActivity(OrdersActivity::class.java)
                     exit -> logOut()
                 }
                 true
@@ -105,7 +106,7 @@ class MainActivity : BaseActivity() {
             when (it.id) {
                 1 -> {
                     val firstFragment =
-                        FirstFragment()
+                        HomeFragment()
                     openFragment(firstFragment)
                     return@setOnClickMenuListener
                 }

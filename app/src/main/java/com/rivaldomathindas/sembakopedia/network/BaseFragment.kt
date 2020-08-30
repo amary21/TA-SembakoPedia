@@ -31,11 +31,6 @@ import org.jetbrains.anko.toast
 
 open class BaseFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
 
     fun isConnected(): Boolean = Connectivity.isConnected(requireActivity())
 

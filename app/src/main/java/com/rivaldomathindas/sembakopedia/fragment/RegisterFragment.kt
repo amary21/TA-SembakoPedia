@@ -36,7 +36,8 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import timber.log.Timber
 
-class RegisterFragment : BaseFragment() {
+class
+RegisterFragment : BaseFragment() {
     private lateinit var registerSuccessful: Bitmap
     private var imageUri: Uri? = null
     private var imageSelected = false

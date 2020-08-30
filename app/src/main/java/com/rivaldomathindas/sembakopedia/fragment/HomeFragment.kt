@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.DocumentChange
@@ -20,13 +19,13 @@ import com.rivaldomathindas.sembakopedia.utils.*
 import kotlinx.android.synthetic.main.fragment_parts.*
 import timber.log.Timber
 
-class FirstFragment : BaseFragment(), PartCallback {
+class HomeFragment : BaseFragment(), PartCallback {
     private lateinit var partsAdapter: PartsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_parts, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

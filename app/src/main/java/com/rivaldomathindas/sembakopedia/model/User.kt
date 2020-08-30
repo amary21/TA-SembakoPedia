@@ -13,5 +13,4 @@ data class User(
         var dateCreated: String? = null,
         var dateModified: String? = null,
         var avatar: String? = null
-): Serializable {
-}
+): Serializable

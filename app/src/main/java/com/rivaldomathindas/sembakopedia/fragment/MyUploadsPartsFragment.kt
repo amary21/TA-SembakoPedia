@@ -1,15 +1,16 @@
 package com.rivaldomathindas.sembakopedia.fragment
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.Query
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.activity.PartActivity
 import com.rivaldomathindas.sembakopedia.adapter.PartsAdapter
@@ -17,8 +18,8 @@ import com.rivaldomathindas.sembakopedia.callbacks.PartCallback
 import com.rivaldomathindas.sembakopedia.model.Part
 import com.rivaldomathindas.sembakopedia.network.BaseFragment
 import com.rivaldomathindas.sembakopedia.utils.*
-import kotlinx.android.synthetic.main.fragment_my_parts.*
 import kotlinx.android.synthetic.main.fragment_my_parts.view.*
+import kotlinx.android.synthetic.main.fragment_parts.*
 import timber.log.Timber
 
 class MyUploadsPartsFragment : BaseFragment(), PartCallback {
@@ -39,43 +40,43 @@ class MyUploadsPartsFragment : BaseFragment(), PartCallback {
 
     private fun loadParts() {
         getFirestore().collection(K.PARTS)
-                //.orderBy(K.TIMESTAMP, Query.Direction.DESCENDING)
-                .whereEqualTo("sellerId", getUid())
-                .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
-                    if (firebaseFirestoreException != null) {
-                        Timber.e("Error fetching parts $firebaseFirestoreException")
-                        noParts()
-                    }
+            //.orderBy(K.TIMESTAMP, Query.Direction.DESCENDING)
+            .whereEqualTo("sellerId", getUid())
+            .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+                if (firebaseFirestoreException != null) {
+                    Timber.e("Error fetching parts $firebaseFirestoreException")
+                    noParts()
+                }
 
-                    if (querySnapshot == null || querySnapshot.isEmpty) {
-                        noParts()
-                    } else {
-                        hasParts()
+                if (querySnapshot == null || querySnapshot.isEmpty) {
+                    noParts()
+                } else {
+                    hasParts()
 
-                        for (docChange in querySnapshot.documentChanges) {
+                    for (docChange in querySnapshot.documentChanges) {
 
-                            when(docChange.type) {
-                                DocumentChange.Type.ADDED -> {
-                                    val part = docChange.document.toObject(Part::class.java)
-                                    partsAdapter.addPart(part)
-                                }
+                        when(docChange.type) {
+                            DocumentChange.Type.ADDED -> {
+                                val part = docChange.document.toObject(Part::class.java)
+                                partsAdapter.addPart(part)
+                            }
 
-                                DocumentChange.Type.MODIFIED -> {
-                                    val part = docChange.document.toObject(Part::class.java)
-                                    partsAdapter.updatePart(part)
-                                }
+                            DocumentChange.Type.MODIFIED -> {
+                                val part = docChange.document.toObject(Part::class.java)
+                                partsAdapter.updatePart(part)
+                            }
 
-                                DocumentChange.Type.REMOVED -> {
-                                    val part = docChange.document.toObject(Part::class.java)
-                                    partsAdapter.removePart(part)
-                                }
-
+                            DocumentChange.Type.REMOVED -> {
+                                val part = docChange.document.toObject(Part::class.java)
+                                partsAdapter.removePart(part)
                             }
 
                         }
 
                     }
+
                 }
+            }
     }
 
     private fun initViews(v: View) {
