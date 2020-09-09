@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_chat.view.*
 import timber.log.Timber
 
 
-class ThirdFragment : BaseFragment(), ChatListCallback {
+class ChatsFragment : BaseFragment(), ChatListCallback {
     private lateinit var chatsAdapter: ChatsAdapter
     private lateinit var chatsQuery: Query
 

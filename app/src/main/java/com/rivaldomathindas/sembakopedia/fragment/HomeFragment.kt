@@ -11,16 +11,15 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.Query
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.activity.PartActivity
-import com.rivaldomathindas.sembakopedia.adapter.PartsAdapter
-import com.rivaldomathindas.sembakopedia.callbacks.PartCallback
-import com.rivaldomathindas.sembakopedia.model.Part
+import com.rivaldomathindas.sembakopedia.adapter.ProductsAdapter
+import com.rivaldomathindas.sembakopedia.callbacks.ProductCallback
+import com.rivaldomathindas.sembakopedia.model.Product
 import com.rivaldomathindas.sembakopedia.network.BaseFragment
 import com.rivaldomathindas.sembakopedia.utils.*
-import kotlinx.android.synthetic.main.fragment_parts.*
-import timber.log.Timber
+import kotlinx.android.synthetic.main.fragment_product.*
 
-class HomeFragment : BaseFragment(), PartCallback {
-    private lateinit var partsAdapter: PartsAdapter
+class HomeFragment : BaseFragment(), ProductCallback {
+    private lateinit var productsAdapter: ProductsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -42,41 +41,40 @@ class HomeFragment : BaseFragment(), PartCallback {
         rv.itemAnimator = DefaultItemAnimator()
         (rv.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
 
-        partsAdapter = PartsAdapter(this)
-        rv.adapter = partsAdapter
+        productsAdapter = ProductsAdapter(this)
+        rv.adapter = productsAdapter
 
     }
 
     private fun loadParts() {
-        getFirestore().collection(K.PARTS)
+        getFirestore().collection(K.PRODUCTS)
             .orderBy(K.TIMESTAMP, Query.Direction.DESCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if (firebaseFirestoreException != null) {
-                    Timber.e("Error fetching parts $firebaseFirestoreException")
-                    noParts()
+                    noProducts()
                 }
 
                 if (querySnapshot == null || querySnapshot.isEmpty) {
-                    noParts()
+                    noProducts()
                 } else {
-                    hasParts()
+                    hasProducts()
 
                     for (docChange in querySnapshot.documentChanges) {
 
                         when(docChange.type) {
                             DocumentChange.Type.ADDED -> {
-                                val part = docChange.document.toObject(Part::class.java)
-                                partsAdapter.addPart(part)
+                                val product = docChange.document.toObject(Product::class.java)
+                                productsAdapter.addProduct(product)
                             }
 
                             DocumentChange.Type.MODIFIED -> {
-                                val part = docChange.document.toObject(Part::class.java)
-                                partsAdapter.updatePart(part)
+                                val product = docChange.document.toObject(Product::class.java)
+                                productsAdapter.updateProduct(product)
                             }
 
                             DocumentChange.Type.REMOVED -> {
-                                val part = docChange.document.toObject(Part::class.java)
-                                partsAdapter.removePart(part)
+                                val product = docChange.document.toObject(Product::class.java)
+                                productsAdapter.removeProduct(product)
                             }
 
                         }
@@ -87,22 +85,22 @@ class HomeFragment : BaseFragment(), PartCallback {
             }
     }
 
-    private fun hasParts() {
+    private fun hasProducts() {
         rv?.hideShimmerAdapter()
         empty?.hideView()
         rv?.showView()
     }
 
-    private fun noParts() {
+    private fun noProducts() {
         rv?.hideShimmerAdapter()
         rv?.hideView()
         empty?.showView()
     }
 
-    override fun onClick(v: View, part: Part) {
+    override fun onClick(v: View, product: Product) {
         val i = Intent(activity, PartActivity::class.java)
-        i.putExtra(K.PART, part)
-        i.putExtra(K.MINE, (part.sellerId == getUid()))
+        i.putExtra(K.product, product)
+        i.putExtra(K.MINE, (product.sellerId == getUid()))
         startActivity(i)
         AppUtils.animateFadein(requireActivity())
 

@@ -11,6 +11,7 @@ import com.rivaldomathindas.sembakopedia.utils.addFragment
 import org.jetbrains.anko.toast
 
 class AuthActivity : BaseActivity() {
+
     private lateinit var loginFragment: LoginFragment
     private lateinit var registerFragment: RegisterFragment
     private var doubleBackToExit = false
@@ -24,9 +25,10 @@ class AuthActivity : BaseActivity() {
         loginFragment = LoginFragment()
         registerFragment = RegisterFragment()
 
-        addFragment(loginFragment, R.id.authHolder)
+        addFragment(loginFragment, R.id.authFrameLayout)
     }
 
+    //cek jika telah login
     private fun checkIfLoggedIn() {
         if (getUser() != null){
             startActivity(Intent(this, MainActivity::class.java))
@@ -35,9 +37,10 @@ class AuthActivity : BaseActivity() {
         }
     }
 
+    //override fungsi back
     override fun onBackPressed() {
         if (!registerFragment.backPressOkay() || !loginFragment.backPressOkay()) {
-            toast("Please wait...")
+            toast(getString(R.string.please_wait))
 
         } else if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStackImmediate()
@@ -45,7 +48,7 @@ class AuthActivity : BaseActivity() {
             if (doubleBackToExit) {
                 super.finish()
             } else {
-                toast("Tap back again to exit")
+                toast(getString(R.string.tap_back_again_to_exit))
                 doubleBackToExit = true
 
                 Handler().postDelayed({doubleBackToExit = false}, 1500)

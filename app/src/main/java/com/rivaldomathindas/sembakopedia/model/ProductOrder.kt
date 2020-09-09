@@ -1,6 +1,6 @@
 package com.rivaldomathindas.sembakopedia.model
 
-class PartOrder(
+class ProductOrder(
         var id: String? = null,
         var name: String? = null,
         var buyerId: String? = null,

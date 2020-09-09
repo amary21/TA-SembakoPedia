@@ -6,29 +6,26 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.Query
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.activity.PartActivity
-import com.rivaldomathindas.sembakopedia.adapter.PartsAdapter
-import com.rivaldomathindas.sembakopedia.callbacks.PartCallback
-import com.rivaldomathindas.sembakopedia.model.Part
+import com.rivaldomathindas.sembakopedia.adapter.ProductsAdapter
+import com.rivaldomathindas.sembakopedia.callbacks.ProductCallback
+import com.rivaldomathindas.sembakopedia.model.Product
 import com.rivaldomathindas.sembakopedia.network.BaseFragment
 import com.rivaldomathindas.sembakopedia.utils.*
-import kotlinx.android.synthetic.main.fragment_my_parts.view.*
-import kotlinx.android.synthetic.main.fragment_parts.*
-import timber.log.Timber
+import kotlinx.android.synthetic.main.fragment_my_products.view.*
+import kotlinx.android.synthetic.main.fragment_product.*
 
-class MyUploadsPartsFragment : BaseFragment(), PartCallback {
-    private lateinit var partsAdapter: PartsAdapter
+class MySalesProductFragment : BaseFragment(), ProductCallback {
+    private lateinit var productsAdapter: ProductsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_parts, container, false)
+        return inflater.inflate(R.layout.fragment_my_products, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,12 +36,11 @@ class MyUploadsPartsFragment : BaseFragment(), PartCallback {
     }
 
     private fun loadParts() {
-        getFirestore().collection(K.PARTS)
+        getFirestore().collection(K.PRODUCTS)
             //.orderBy(K.TIMESTAMP, Query.Direction.DESCENDING)
             .whereEqualTo("sellerId", getUid())
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if (firebaseFirestoreException != null) {
-                    Timber.e("Error fetching parts $firebaseFirestoreException")
                     noParts()
                 }
 
@@ -57,18 +53,18 @@ class MyUploadsPartsFragment : BaseFragment(), PartCallback {
 
                         when(docChange.type) {
                             DocumentChange.Type.ADDED -> {
-                                val part = docChange.document.toObject(Part::class.java)
-                                partsAdapter.addPart(part)
+                                val product = docChange.document.toObject(Product::class.java)
+                                productsAdapter.addProduct(product)
                             }
 
                             DocumentChange.Type.MODIFIED -> {
-                                val part = docChange.document.toObject(Part::class.java)
-                                partsAdapter.updatePart(part)
+                                val product = docChange.document.toObject(Product::class.java)
+                                productsAdapter.updateProduct(product)
                             }
 
                             DocumentChange.Type.REMOVED -> {
-                                val part = docChange.document.toObject(Part::class.java)
-                                partsAdapter.removePart(part)
+                                val product = docChange.document.toObject(Product::class.java)
+                                productsAdapter.removeProduct(product)
                             }
 
                         }
@@ -85,8 +81,8 @@ class MyUploadsPartsFragment : BaseFragment(), PartCallback {
         rv.itemAnimator = DefaultItemAnimator()
         rv.addItemDecoration(RecyclerFormatter.GridItemDecoration(requireActivity(), 2, 10))
 
-        partsAdapter = PartsAdapter(this)
-        rv.adapter = partsAdapter
+        productsAdapter = ProductsAdapter(this)
+        rv.adapter = productsAdapter
         rv.showShimmerAdapter()
 
         Handler().postDelayed({
@@ -106,10 +102,10 @@ class MyUploadsPartsFragment : BaseFragment(), PartCallback {
         empty?.showView()
     }
 
-    override fun onClick(v: View, part: Part) {
+    override fun onClick(v: View, product: Product) {
         val i = Intent(activity, PartActivity::class.java)
-        i.putExtra(K.MINE, (part.sellerId == getUid()))
-        i.putExtra(K.PART, part)
+        i.putExtra(K.MINE, (product.sellerId == getUid()))
+        i.putExtra(K.product, product)
         startActivity(i)
         AppUtils.animateFadein(requireActivity())
     }

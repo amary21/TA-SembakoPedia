@@ -22,7 +22,6 @@
             android:id="@+id/registerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/loginIcon"
             android:layout_marginTop="8dp"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/roboto"
@@ -34,8 +33,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/registerLoginLayout"
-            android:layout_below="@id/registerTitle"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
@@ -156,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:text="I accept the"
+                    android:text="@string/i_accept_the"
                     android:textColor="@color/secondaryText"
                     android:textSize="13sp" />
 
@@ -164,7 +161,7 @@
                     android:id="@+id/registerTerms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Terms and Conditions"
+                    android:text="@string/terms_and_conditions"
                     android:textColor="@color/colorAccent"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -203,8 +200,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:text="Already have an account?"
+            android:text="@string/already_have_an_account"
             android:textColor="@color/secondaryText"
             android:textSize="13sp" />
 

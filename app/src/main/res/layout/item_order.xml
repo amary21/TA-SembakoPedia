@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.rivaldomathindas.sembakopedia.model.PartOrder"/>
+            type="com.rivaldomathindas.sembakopedia.model.ProductOrder"/>
 
         <variable
             name="isMine"

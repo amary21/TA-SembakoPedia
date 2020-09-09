@@ -16,47 +16,54 @@ import com.mikepenz.ionicons_typeface_library.Ionicons
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
 import com.zhihu.matisse.filter.Filter
-import kotlinx.android.synthetic.main.activity_add_part.*
+import kotlinx.android.synthetic.main.activity_add_product.*
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.adapter.ImagesAdapter
-import com.rivaldomathindas.sembakopedia.model.Part
+import com.rivaldomathindas.sembakopedia.model.Product
 import com.rivaldomathindas.sembakopedia.network.BaseActivity
 import com.rivaldomathindas.sembakopedia.utils.*
-import kotlinx.android.synthetic.main.activity_main.*
 import com.rivaldomathindas.sembakopedia.utils.PreferenceHelper.get
 import org.jetbrains.anko.toast
-import timber.log.Timber
 
 class AddPartActivity : BaseActivity() {
-    private var pickedImages = mutableListOf<Uri>()
+
+    private lateinit var prefs: SharedPreferences
     private lateinit var imagesAdapter: ImagesAdapter
-    private val images = mutableMapOf<String, String>()
     private lateinit var KEY: String
-    private val part = Part()
+    private val images = mutableMapOf<String, String>()
+    private var pickedImages = mutableListOf<Uri>()
+    private val product = Product()
 
     private lateinit var makes: Array<String>
-    private lateinit var toyota: Array<String>
-    private lateinit var mazda: Array<String>
-    private lateinit var honda: Array<String>
-    private lateinit var bmw: Array<String>
-    private lateinit var subaru: Array<String>
-    private lateinit var benz: Array<String>
-    private lateinit var prefs: SharedPreferences
+    private lateinit var beras: Array<String>
+    private lateinit var gula: Array<String>
+    private lateinit var minyakGoreng: Array<String>
+    private lateinit var daging: Array<String>
+    private lateinit var susu: Array<String>
+    private lateinit var minyakLPG: Array<String>
+    private lateinit var hasilTani: Array<String>
+    private lateinit var telur: Array<String>
+    private lateinit var garam: Array<String>
+    private lateinit var lainnya: Array<String>
+
 
     companion object {
         private const val IMAGE_PICKER = 401
-        private const val TOYOTA = "Toyota"
-        private const val MAZDA = "Mazda"
-        private const val HONDA = "Honda"
-        private const val BMW = "BMW"
-        private const val BENZ = "Mercedes Benz"
-        private const val SUBARU = "Subaru"
-
+        private const val BERAS = "Beras"
+        private const val GULA = "Gula pasir"
+        private const val MINYAK_GORENG = "Minyak goreng"
+        private const val DAGING = "Daging"
+        private const val MINYAK_LPG = "Minyak tanah dan gas LPG"
+        private const val SUSU = "Susu"
+        private const val HASIL_TANI = "Hasil tani"
+        private const val TELUR = "Telur"
+        private const val GARAM = "Garam"
+        private const val LAINNYA = "Lainnya"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_part)
+        setContentView(R.layout.activity_add_product)
         prefs = PreferenceHelper.defaultPrefs(this)
 
         initViews()
@@ -66,7 +73,7 @@ class AddPartActivity : BaseActivity() {
         setSupportActionBar(toolbar3)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Post part"
+        supportActionBar?.title = getString(R.string.upload_products)
 
         photosRv.setHasFixedSize(true)
         photosRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -77,18 +84,18 @@ class AddPartActivity : BaseActivity() {
         addPhoto.setOnClickListener { pickPhotos() }
 
         initArrays()
-        post.setOnClickListener { postPart() }
+        post.setOnClickListener { postProduct() }
     }
 
-    // Initial arrays for spinners
+    //Spinner jenis sembako
     private fun initArrays() {
         makes = resources.getStringArray(R.array.makes)
-        toyota = resources.getStringArray(R.array.toyota)
-        mazda = resources.getStringArray(R.array.mazda)
-        honda = resources.getStringArray(R.array.honda)
-        benz = resources.getStringArray(R.array.benz)
-        bmw = resources.getStringArray(R.array.bmw)
-        subaru = resources.getStringArray(R.array.subaru)
+        beras = resources.getStringArray(R.array.beras)
+        gula = resources.getStringArray(R.array.gula)
+        minyakGoreng = resources.getStringArray(R.array.minyak_goreng)
+        minyakLPG = resources.getStringArray(R.array.minyak_lpg)
+        daging = resources.getStringArray(R.array.daging)
+        susu = resources.getStringArray(R.array.susu)
 
         make.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -103,19 +110,23 @@ class AddPartActivity : BaseActivity() {
         }
     }
 
-    // Get selected vehicle make and choose models of selected make
+    //Spinner tipe dari jenis sembako
     private fun setModels(make: String) {
         when(make) {
-            TOYOTA -> setModelSpinner(toyota)
-            MAZDA -> setModelSpinner(mazda)
-            HONDA -> setModelSpinner(honda)
-            BENZ -> setModelSpinner(benz)
-            BMW -> setModelSpinner(bmw)
-            SUBARU -> setModelSpinner(subaru)
+            BERAS -> setModelSpinner(beras)
+            GULA -> setModelSpinner(gula)
+            MINYAK_GORENG -> setModelSpinner(minyakGoreng)
+            MINYAK_LPG -> setModelSpinner(minyakLPG)
+            DAGING -> setModelSpinner(daging)
+            SUSU -> setModelSpinner(susu)
+            HASIL_TANI -> setModelSpinner(hasilTani)
+            TELUR -> setModelSpinner(telur)
+            GARAM -> setModelSpinner(garam)
+            LAINNYA -> setModelSpinner(lainnya)
         }
     }
 
-    // Set selected make models
+    //Model spinner
     private fun setModelSpinner(models: Array<String>) {
         val spinnerArrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, models)
         spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item )
@@ -123,7 +134,7 @@ class AddPartActivity : BaseActivity() {
         model.adapter = spinnerArrayAdapter
     }
 
-    // Pick photos from gallery
+    //Memilih foto dari gallery
     private fun pickPhotos() {
         if (!storagePermissionGranted()) {
             requestStoragePermission()
@@ -143,6 +154,7 @@ class AddPartActivity : BaseActivity() {
 
     }
 
+    //Mengambil foto
     private fun setImages() {
         if (pickedImages.size < 1) return
 
@@ -160,58 +172,52 @@ class AddPartActivity : BaseActivity() {
 
     }
 
-    private fun postPart() {
+    //Mengunggah produk
+    private fun postProduct() {
         if (!isConnected()) {
-            toast("Please connect to the internet!")
+            toast(getString(R.string.please_connect_to_the_internet))
             return
         }
 
         if (pickedImages.size < 2) {
-            toast("Please select atleast 2 images...")
+            toast(getString(R.string.please_select_atleast_2_images))
             return
         }
 
-        if(!AppUtils.validated(partTitle, location, price, desc, quantity)) {
-            toast("Please fill all fields!")
+        if(!AppUtils.validated(productTitle, location, price, desc, quantity)) {
+            toast(getString(R.string.please_fill_all_fields))
             return
         }
 
-        KEY = getFirestore().collection(K.PARTS).document().id
+        KEY = getFirestore().collection(K.PRODUCTS).document().id
 
-        showLoading("Uploading images...")
+        showLoading(getString(R.string.uploading_images))
         uploadImages()
-
     }
 
-    // Upload images to firebase storage
+    //Upload foto ke firebase
     private fun uploadImages() {
-        Timber.e("Images to be uploaded ${pickedImages.size}")
-
         for (i in 0..(pickedImages.size-1)) {
-            val ref = getStorageReference().child(K.PARTS).child(KEY).child(i.toString())
+            val ref = getStorageReference().child(K.PRODUCTS).child(KEY).child(i.toString())
 
             val uploadTask = ref.putFile(pickedImages[i])
             uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
-                    Timber.e("Error uploading images ${task.exception}}")
                     throw task.exception!!
                 }
-                // Continue with the task to get the download URL
                 ref.downloadUrl
             }.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     if (i == 0) {
-                        part.image = task.result.toString()
+                        product.image = task.result.toString()
                         images["0"] = task.result.toString()
-                        Timber.e("Uploaded image one $i url is ${task.result}")
 
                     } else {
                         images[i.toString()] = task.result.toString()
-                        Timber.e("Uploaded image $i url is ${task.result}")
 
                         Handler().postDelayed({
                             if(i == (pickedImages.size-1)) {
-                                part.images.putAll(images)
+                                product.images.putAll(images)
                                 hideLoading()
 
                                 setDetails()
@@ -225,37 +231,34 @@ class AddPartActivity : BaseActivity() {
 
     }
 
-    // Set details to Firestore
+    //Detail dalam firebase
     private fun setDetails() {
-        Timber.e("Uploading details to Firestore")
-        showLoading("Uploading part details...")
+        showLoading(getString(R.string.uploading_product_details))
 
-        part.id = KEY
-        part.name = partTitle.text.toString().trim()
-        part.sellerId = getUid()
-        part.sellerName = prefs[K.NAME]
-        part.time = System.currentTimeMillis()
-        part.price = price.text.toString().trim()
-        part.quantity = (quantity.text.toString()).toInt()
-        part.make = make.selectedItem.toString()
-        part.model = model.selectedItem.toString()
-        part.location = location.text.toString().trim()
-        part.number = number.text.toString().trim()
-        part.category = category.selectedItem.toString()
-        part.description = desc.text.toString().trim()
+        product.id = KEY
+        product.name = productTitle.text.toString().trim()
+        product.sellerId = getUid()
+        product.sellerName = prefs[K.NAME]
+        product.time = System.currentTimeMillis()
+        product.price = price.text.toString().trim()
+        product.quantity = (quantity.text.toString()).toInt()
+        product.make = make.selectedItem.toString()
+        product.model = model.selectedItem.toString()
+        product.location = location.text.toString().trim()
+        product.number = number.text.toString().trim()
+        product.category = category.selectedItem.toString()
+        product.description = desc.text.toString().trim()
 
-        getFirestore().collection(K.PARTS).document(KEY).set(part)
+        getFirestore().collection(K.PRODUCTS).document(KEY).set(product)
                 .addOnSuccessListener {
-                    Timber.e("Part successfully uploaded")
                     hideLoading()
 
-                    toast("Part successfully uploaded")
+                    toast(getString(R.string.product_successfully_uploaded))
                 }
                 .addOnFailureListener {
-                    Timber.e("Error uploading: $it")
                     hideLoading()
 
-                    toast("Error uploading part. Please try again")
+                    toast(getString(R.string.error_uploading_product))
                 }
 
     }

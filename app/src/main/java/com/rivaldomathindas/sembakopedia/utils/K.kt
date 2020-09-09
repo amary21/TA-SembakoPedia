@@ -8,7 +8,7 @@ object K {
     const val CARS = "cars"
     const val SOLD = "sold"
     const val TIMESTAMP = "time"
-    const val PARTS = "parts"
+    const val PRODUCTS = "products"
     const val WATCHLIST = "watchlist"
     const val ORDERS = "orders"
     const val REQUESTS = "requests"
@@ -32,7 +32,7 @@ object K {
     const val CAR = "car"
 
     // Part
-    const val PART = "part"
+    const val product = "product"
     const val PART_ID = "id"
     const val PART_IMAGE = "image"
     const val MINE = "mine"

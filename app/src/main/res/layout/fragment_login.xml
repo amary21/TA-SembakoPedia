@@ -139,7 +139,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
             android:text="@string/not_a_member_yet"
             android:textColor="@color/secondaryText"
             android:textSize="13sp" />

@@ -13,8 +13,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         iv_splash.alpha = 0f
         iv_splash.animate().setDuration(1500).alpha(1f).withEndAction{
-            val intent = Intent(this, AuthActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, AuthActivity::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
         }

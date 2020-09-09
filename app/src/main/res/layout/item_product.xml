@@ -7,12 +7,12 @@
     <data>
         
         <variable
-            name="part"
-            type="com.rivaldomathindas.sembakopedia.model.Part"/>
+            name="product"
+            type="com.rivaldomathindas.sembakopedia.model.Product"/>
 
         <variable
             name="callback"
-            type="com.rivaldomathindas.sembakopedia.callbacks.PartCallback"/>
+            type="com.rivaldomathindas.sembakopedia.callbacks.ProductCallback"/>
         
     </data>
 
@@ -25,7 +25,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{(v) -> callback.onClick(v, part)}">
+            android:onClick="@{(v) -> callback.onClick(v, product)}">
 
             <com.rivaldomathindas.sembakopedia.utils.SquareLayout
                 android:id="@+id/image_holder"
@@ -38,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:background="@color/light_background"
-                    app:imageUrl="@{part.image}"
+                    app:imageUrl="@{product.image}"
                     tools:src="@drawable/fozzy"/>
 
             </com.rivaldomathindas.sembakopedia.utils.SquareLayout>
@@ -58,7 +58,7 @@
                     android:textStyle="bold"
                     android:maxLines="2"
                     android:ellipsize="end"
-                    android:text="@{part.name}"
+                    android:text="@{product.name}"
                     tools:text="Brembo brakes"/>
 
                 <TextView
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondaryText"
                     android:maxLines="1"
-                    android:text="@{`KES ` + part.price}"
+                    android:text="@{`KES ` + product.price}"
                     tools:text="KES 53000"/>
 
             </LinearLayout>

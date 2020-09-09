@@ -1,126 +1,58 @@
 <resources>
     <string name="app_name">SembakoPedia</string>
-    <string name="please_wait">Please wait...</string>
-    <string name="tap_back_again_to_exit">Tap back again to exit</string>
+    <string name="please_wait">Mohon menunggu...</string>
+    <string name="tap_back_again_to_exit">Ketuk sekali lagi untuk keluar</string>
 
-    <string name="image">Image</string>
-    <string name="email_address">Email address</string>
-    <string name="title">Title</string>
-    <string name="location">Location</string>
-    <string name="ratting">Ratting</string>
-    <string name="price">Price</string>
-    <string name="review">Review</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="forgot_password">Forgot password?</string>
-    <string name="not_a_member_yet">Not a member yet?</string>
-    <string name="register">Register</string>
-    <string name="first_name">First name</string>
-    <string name="last_name">Last name</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="i_accept_the">I accept the</string>
-    <string name="terms_and_conditions">Terms and Conditions</string>
-    <string name="already_have_an_account">Already have an account?</string>
+    <string name="image">Foto</string>
+    <string name="email_address">Alamat email</string>
+    <string name="title">Judul</string>
+    <string name="location">Lokasi</string>
+    <string name="ratting">Penilaian</string>
+    <string name="price">Harga</string>
+    <string name="review">Ulasan</string>
+    <string name="password">Kata sandi</string>
+    <string name="login">Masuk</string>
+    <string name="forgot_password">Lupa password?</string>
+    <string name="not_a_member_yet">Belum terdaftar?</string>
+    <string name="register">Mendaftar</string>
+    <string name="first_name">Nama depan</string>
+    <string name="last_name">Nama belakang</string>
+    <string name="sign_up">Daftar</string>
+    <string name="i_accept_the">Saya menerima</string>
+    <string name="terms_and_conditions">Syarat dan ketentuan</string>
+    <string name="already_have_an_account">Sudah memiliki akun?</string>
 
-    <string name="password_incorrect">Password incorrect</string>
-    <string name="account_not_found">Account not found. Have you signed up?</string>
-    <string name="error_signing_in">Error signing in. Please try again.</string>
-    <string name="error_signing_up">Error signing up. Please try again.</string>
-    <string name="alert_forgot_password">Instructions to reset your password will be sent to</string>
-    <string name="send_email">SEND EMAIL</string>
-    <string name="email_sent">Email sent</string>
-    <string name="incorrect_email_format">Incorrect email format</string>
-    <string name="email_not_sent">Email not sent. Please try again.</string>
-    <string name="welcome_back">Welcome back</string>
-    <string name="welcome">Welcome</string>
-    <string name="fetching_user_data_failed">Fetching user data failed with</string>
-    <string name="does_not_match_password">Does not match password</string>
-    <string name="please_check_the_terms_and_conditions">Please check the terms and conditions</string>
-    <string name="please_select_a_profile_picture">Please select a profile picture</string>
-    <string name="please_enter_a_stronger_password">Please enter a stronger password</string>
-    <string name="account_already_exists">Account already exists. Please log in.</string>
-    <string name="cropping_error">Cropping error</string>
-    <string name="home">Home</string>
-    <string name="my_sales">My Sales</string>
-    <string name="my_purchases">My Purchases</string>
-    <string name="incoming_orders">Incoming Orders</string>
-    <string name="statistics">Statistics</string>
-    <string name="chats">Chats</string>
-    <string name="settings">Settings</string>
-    <string name="about">About</string>
-    <string name="logout">Log out</string>
-    <string name="loading">Loading</string>
-    <string name="are_you_sure_to_log_out">Are you sure to log out ?</string>
-    <string name="cancel">Cancel</string>
-    <string name="yes">Yes</string>
-
-    <string name="upload_products">Upload products</string>
-    <string name="please_connect_to_the_internet">Please connect to the internet!</string>
-    <string name="please_select_atleast_2_images">Please select atleast 2 images...</string>
-    <string name="please_fill_all_fields">Please fill all fields!</string>
-    <string name="uploading_images">Uploading images...</string>
-    <string name="uploading_product_details">Uploading part details...</string>
-    <string name="product_successfully_uploaded">Part successfully uploaded</string>
-    <string name="error_uploading_product">Error uploading part. Please try again</string>
-
-    <string-array name="makes">
-        <item name="beras">Beras</item>
-        <item name="gula">Gula</item>
-        <item name="minyak_goreng">Minyak Goreng</item>
-        <item name="daging">Daging</item>
-        <item name="minyak_lpg">Minyak Tanah dan Gas LPG</item>
-        <item name="susu">Susu</item>
-        <item name="hasil_tani">Hasil tani</item>
-        <item name="telur">Telur</item>
-        <item name="garam">Garam</item>
-        <item name="lainnya">Lainnya</item>
-    </string-array>
-
-    <string-array name="beras">
-        <item name="superwin">Superwin</item>
-        <item name="temo">Temo</item>
-        <item name="nurdin">Nurdin</item>
-        <item name="pulo">Pulo</item>
-        <item name="temo">Temo</item>
-        <item name="lainnya">Lainnya</item>
-    </string-array>
-
-    <string-array name="gula">
-        <item name="lokal">Lokal</item>
-        <item name="premium">Premium</item>
-    </string-array>
-
-    <string-array name="susu">
-        <item name="umum">Untuk umum</item>
-        <item name="ibu_hamil">Untuk ibu hamil</item>
-        <item name="bayi">Untuk bayi</item>
-    </string-array>
-
-    <string-array name="minyak_goreng">
-        <item name="lokal">Lokal</item>
-        <item name="premium">Premium</item>
-    </string-array>
-
-    <string-array name="minyak_lpg">
-        <item name="Minyak tanah">Minyak tanah</item>
-        <item name="Gas LPG">Gas LPG</item>
-    </string-array>
-
-    <string-array name="daging">
-        <item name="Ayam">Ayam</item>
-        <item name="Sapi">Sapi</item>
-        <item name="Kambing">Kambing</item>
-    </string-array>
-
-
-
-
-
-
-
-
-
-
+    <string name="password_incorrect">Password salah</string>
+    <string name="account_not_found">Akun tidak ditemukan. Apakah anda sudah mendaftar?</string>
+    <string name="error_signing_in">Error saat masuk. Coba lagi.</string>
+    <string name="error_signing_up">Error saat daftar. Coba lagi.</string>
+    <string name="alert_forgot_password">Instruksi untuk mereset kata sandi akan dikirimkan ke</string>
+    <string name="send_email">Kirim Email</string>
+    <string name="email_sent">Email telah dikirim</string>
+    <string name="incorrect_email_format">Kesalahan format email</string>
+    <string name="email_not_sent">Email tidak terkirim. Coba lagi</string>
+    <string name="welcome_back">Selamat datang kembali</string>
+    <string name="welcome">Selamat datang</string>
+    <string name="fetching_user_data_failed">Menghubungkan data pengguna gagal : </string>
+    <string name="does_not_match_password">Kata sandi tidak cocok</string>
+    <string name="please_check_the_terms_and_conditions">Mohon periksa syarat dan ketentuan</string>
+    <string name="please_select_a_profile_picture">Mohon memilih foto profil</string>
+    <string name="please_enter_a_stronger_password">Mohon menggunakan kata sandi yang lebih kuat</string>
+    <string name="account_already_exists">Akun telah digunakan. Coba masuk</string>
+    <string name="cropping_error">Pemotongan gagal</string>
+    <string name="home">Beranda</string>
+    <string name="my_sales">Penjualanku</string>
+    <string name="my_purchases">Pembelianku</string>
+    <string name="incoming_orders">Pesanan masuk</string>
+    <string name="statistics">Statistik</string>
+    <string name="chats">Obrolan</string>
+    <string name="settings">Pengaturan</string>
+    <string name="about">Tentang</string>
+    <string name="logout">Keluar</string>
+    <string name="loading">Memuat</string>
+    <string name="are_you_sure_to_log_out">Kamu yakin untuk keluar ?</string>
+    <string name="cancel">Batal</string>
+    <string name="yes">Ya</string>
 
 
 
@@ -145,7 +77,6 @@
 
 
     <string name="phone">Phone</string>
-
     <string name="confirm_password">Confirm password</string>
     <string name="terms">Terms and Conditions</string>
     <string name="agree_to_terms">I accept the</string>
@@ -221,18 +152,78 @@
     <string name="what_time_would_you_like_to_book">What time would you like to book?</string>
     <string name="lastname">Last name</string>
     <string name="firstname">First name</string>
-    <string name="make_order">Make order</string>
-    <string name="delete">DELETE</string>
-    <string name="deleted">deleted</string>
-    <string name="making_order">Making order...</string>
-    <string name="error_making_order">Error making order. Please try again</string>
-
 
     <string-array name="holder">
         <item name="category">Please select</item>
     </string-array>
 
+<!--    <string-array name="makes">-->
+<!--        <item name="toyota">Toyota</item>-->
+<!--        <item name="mazda">Mazda</item>-->
+<!--        <item name="subaru">Subaru</item>-->
+<!--        <item name="honda">Honda</item>-->
+<!--        <item name="benz">Mercedes Benz</item>-->
+<!--        <item name="bmw">BMW</item>-->
+<!--        <item name="bmw">BMW</item>-->
+<!--    </string-array>-->
 
+<!--    <string-array name="gula">-->
+<!--        <item name="premacy">Premacy</item>-->
+<!--        <item name="demio">Demio</item>-->
+<!--        <item name="axela">Axela</item>-->
+<!--        <item name="cx5">CX-5</item>-->
+<!--        <item name="atenza">Atenza</item>-->
+<!--        <item name="verisa">Verisa</item>-->
+<!--    </string-array>-->
+
+<!--    <string-array name="susu">-->
+<!--        <item name="legacy">Legacy</item>-->
+<!--        <item name="outback">Outback</item>-->
+<!--        <item name="forester">Forester</item>-->
+<!--        <item name="imprezza">Imprezza</item>-->
+<!--        <item name="xv">XV</item>-->
+<!--        <item name="exiga">Exiga</item>-->
+<!--    </string-array>-->
+
+<!--    <string-array name="minyak_goreng">-->
+<!--        <item name="fit">Fit</item>-->
+<!--        <item name="airwave">Airwave</item>-->
+<!--        <item name="civic">Civic</item>-->
+<!--        <item name="crv">CR-V</item>-->
+<!--        <item name="crossroad">Crossroad</item>-->
+<!--        <item name="accord">Accord</item>-->
+<!--    </string-array>-->
+
+<!--    <string-array name="minyak_lpg">-->
+<!--        <item name="c200">C200</item>-->
+<!--        <item name="e250">E250</item>-->
+<!--        <item name="a180">A180</item>-->
+<!--        <item name="ml350">ML350</item>-->
+<!--        <item name="c250">C250 Coupe</item>-->
+<!--        <item name="gl300">GL300</item>-->
+<!--    </string-array>-->
+
+<!--    <string-array name="daging">-->
+<!--        <item name="318">318i</item>-->
+<!--        <item name="325">325i</item>-->
+<!--        <item name="525">535i</item>-->
+<!--        <item name="x5">X5</item>-->
+<!--        <item name="x6">X6</item>-->
+<!--        <item name="m5">M5</item>-->
+<!--    </string-array>-->
+
+<!--    <string-array name="beras">-->
+<!--        <item name="corolla">Corolla</item>-->
+<!--        <item name="premio">Premio</item>-->
+<!--        <item name="fielder">Fielder</item>-->
+<!--        <item name="prado">Landcruiser Prado</item>-->
+<!--        <item name="harrier">Harrier</item>-->
+<!--        <item name="hilux">Hilux</item>-->
+<!--        <item name="prado">Landcruiser Prado</item>-->
+<!--        <item name="nze">NZE</item>-->
+<!--        <item name="axio">Axio</item>-->
+<!--        <item name="vitz">Vitz</item>-->
+<!--    </string-array>-->
 
     <string-array name="condition">
         <item name="new">Brand New</item>

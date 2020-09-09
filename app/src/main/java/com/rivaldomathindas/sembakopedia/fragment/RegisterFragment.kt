@@ -1,6 +1,5 @@
 package com.rivaldomathindas.sembakopedia.fragment
 
-
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -34,10 +33,10 @@ import com.rivaldomathindas.sembakopedia.utils.*
 import com.rivaldomathindas.sembakopedia.utils.PreferenceHelper.set
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-import timber.log.Timber
 
 class
 RegisterFragment : BaseFragment() {
+
     private lateinit var registerSuccessful: Bitmap
     private var imageUri: Uri? = null
     private var imageSelected = false
@@ -50,7 +49,7 @@ RegisterFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
         val successfulIcon = setDrawable(requireActivity(), Ionicons.Icon.ion_checkmark_round, R.color.white, 25)
         registerSuccessful = drawableToBitmap(successfulIcon)
         prefs = PreferenceHelper.defaultPrefs(requireActivity())
@@ -73,8 +72,6 @@ RegisterFragment : BaseFragment() {
                 if (storagePermissionGranted()) {
                     val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                     startActivityForResult(galleryIntent, AVATAR_REQUEST)
-
-                    //pickImageFromGallery()
                 } else {
                     requestStoragePermission()
                 }
@@ -86,8 +83,8 @@ RegisterFragment : BaseFragment() {
                 if (requireActivity().supportFragmentManager.backStackEntryCount > 0)
                     requireActivity().supportFragmentManager.popBackStackImmediate()
                 else
-                    (activity as AppCompatActivity).replaceFragment(LoginFragment(), R.id.authHolder)
-            } else requireActivity().toast("Please wait...")
+                    (activity as AppCompatActivity).replaceFragment(LoginFragment(), R.id.authFrameLayout)
+            } else requireActivity().toast(getString(R.string.please_wait))
         }
 
         registerTerms.setOnClickListener {
@@ -95,14 +92,14 @@ RegisterFragment : BaseFragment() {
                 val i = Intent(Intent.ACTION_VIEW)
                 i.data = Uri.parse("https://sites.google.com/view/dankmemesapp/terms-and-conditions")
                 startActivity(i)
-            } else requireActivity().toast("Please wait...")
+            } else requireActivity().toast(getString(R.string.please_wait))
         }
 
         registerButton.setOnClickListener { signUp() }
     }
 
+    //cek data dan membuat user baru
     private fun signUp() {
-        // Check if all fields are filled
         if (!AppUtils.validated(registerFirstname, registerLastname, registerEmail, registerPassword, registerConfirmPassword)) return
 
         val name = "${registerFirstname.text.toString().trim()} ${registerLastname.text.toString().trim()}"
@@ -110,34 +107,27 @@ RegisterFragment : BaseFragment() {
         val pw = registerPassword.text.toString().trim()
         val confirmPw = registerConfirmPassword.text.toString().trim()
 
-        // Check if password and confirm password match
+        //cek data
         if (pw != confirmPw) {
-            registerConfirmPassword.error = "Does not match password"
+            registerConfirmPassword.error = getString(R.string.does_not_match_password)
             return
         }
-
-        // Check if user has agreed to terms and conditions
         if (!registerCheckBox.isChecked) {
-            activity?.toast("Please check the terms and conditions")
+            activity?.toast(getString(R.string.please_check_the_terms_and_conditions))
             return
         }
-
-        // Check if user has selected avatar
         if (!imageSelected) {
-            activity?.toast("Please select a profile picture")
+            activity?.toast(getString(R.string.please_select_a_profile_picture))
             return
         }
 
-        // Create new user
+        //membuat user baru
         isCreatingAccount = true
         registerButton.startAnimation()
         getFirebaseAuth().createUserWithEmailAndPassword(email, pw)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
-                        registerButton.doneLoadingAnimation(getColor(requireActivity(), R.color.pink), registerSuccessful)
-                        Timber.e("signingIn: Success!")
-
-                        // update UI with the signed-in user's information
+                        registerButton.doneLoadingAnimation(getColor(requireActivity(), R.color.primary), registerSuccessful)
                         val user = task.result!!.user
                         updateUI(user!!)
 
@@ -151,30 +141,25 @@ RegisterFragment : BaseFragment() {
                         } catch (weakPassword: FirebaseAuthWeakPasswordException){
                             isCreatingAccount = false
                             registerButton.revertAnimation()
-                            registerPassword.error = "Please enter a stronger password"
-
+                            registerPassword.error = getString(R.string.please_enter_a_stronger_password)
                         } catch (userExists: FirebaseAuthUserCollisionException) {
                             isCreatingAccount = false
                             registerButton.revertAnimation()
-                            activity?.toast("Account already exists. Please log in.")
-
+                            activity?.toast(getString(R.string.account_already_exists))
                         } catch (malformedEmail: FirebaseAuthInvalidCredentialsException) {
                             isCreatingAccount = false
                             registerButton.revertAnimation()
-                            registerEmail.error = "Incorrect email format"
-
+                            registerEmail.error = getString(R.string.incorrect_email_format)
                         } catch (e: Exception) {
                             isCreatingAccount = false
                             registerButton.revertAnimation()
-                            Timber.e( "signingIn: Failure - $e}")
-                            activity?.toast("Error signing up. Please try again.")
+                            activity?.toast(getString(R.string.error_signing_up))
                         }
                     }
                 }
-
-
     }
 
+    //menyimpan data ke firebase
     private fun updateUI(user: FirebaseUser) {
         val id = user.uid
 
@@ -182,7 +167,6 @@ RegisterFragment : BaseFragment() {
         newUser.name = "${registerFirstname.text.toString().trim()} ${registerLastname.text.toString().trim()}"
         newUser.email = user.email
         newUser.dateCreated = TimeFormatter().getNormalYear(System.currentTimeMillis())
-        //newUser.token = getToken()
         newUser.id = id
         newUser.phone = registerPhone.text.toString().trim()
 
@@ -192,9 +176,6 @@ RegisterFragment : BaseFragment() {
             if (!task.isSuccessful) {
                 throw task.exception!!
             }
-            Timber.e("Image uploaded")
-
-            // Continue with the task to getBitmap the download URL
             ref.downloadUrl
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -204,10 +185,9 @@ RegisterFragment : BaseFragment() {
                 FirebaseMessaging.getInstance().subscribeToTopic(K.TOPIC_GLOBAL)
 
                 getFirestore().collection(K.USERS).document(id).set(newUser).addOnSuccessListener {
-                    Timber.e("Adding user: $newUser")
-                    registerButton.doneLoadingAnimation(getColor(requireActivity(), R.color.pink), registerSuccessful)
+                    registerButton.doneLoadingAnimation(getColor(requireActivity(), R.color.primary), registerSuccessful)
 
-                    requireActivity().toast("Welcome ${registerFirstname.text.toString().trim()} ${registerLastname.text.toString().trim()}")
+                    requireActivity().toast(getString(R.string.welcome) + " ${registerFirstname.text.toString().trim()} ${registerLastname.text.toString().trim()}")
                     startActivity(Intent(requireActivity(), MainActivity::class.java))
                     AppUtils.animateEnterRight(requireActivity())
                     requireActivity().finish()
@@ -215,12 +195,12 @@ RegisterFragment : BaseFragment() {
 
             } else {
                 registerButton.revertAnimation()
-                activity?.toast("Error signing up. Please try again.")
-                Timber.e("Error signing up: ${task.exception}")
+                activity?.toast(getString(R.string.error_signing_up))
             }
         }
     }
 
+    //ambil gambar
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -228,7 +208,6 @@ RegisterFragment : BaseFragment() {
             data.let { imageUri = it!!.data }
 
             startCropActivity(imageUri!!)
-            Timber.e("Avatar uri: ${data.toString()}\"")
         }
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -236,27 +215,28 @@ RegisterFragment : BaseFragment() {
             if (resultCode == Activity.RESULT_OK) {
                 imageSelected = true
                 val resultUri = result.uri
-                Timber.e("Avatar: $resultUri")
 
                 registerAvatar?.loadUrl(resultUri.toString())
                 imageUri = resultUri
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-               Timber.e( "Cropping error: ${result.error.message}")
+               activity?.toast(getString(R.string.cropping_error))
             }
         }
 
     }
 
+    //crop pada gambar
     private fun startCropActivity(imageUri: Uri) {
         CropImage.activity(imageUri)
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(requireContext(), this)
     }
 
-    // Check if user has initiated signing up process. If in process, disable back button
+    //menon-aktifkan tombol back ketika sedang membuat akun
     fun backPressOkay(): Boolean = !isCreatingAccount
 
+    //memodifikasi fungsi dari onDestroy
     override fun onDestroy() {
         if (registerButton != null) registerButton.dispose()
         super.onDestroy()

@@ -9,26 +9,26 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.google.firebase.database.*
-import com.rivaldomathindas.sembakopedia.adapter.PartOrdersAdapter
-import com.rivaldomathindas.sembakopedia.model.PartOrder
+import com.rivaldomathindas.sembakopedia.adapter.ProductOrdersAdapter
+import com.rivaldomathindas.sembakopedia.model.ProductOrder
 import com.rivaldomathindas.sembakopedia.network.BaseFragment
 import com.rivaldomathindas.sembakopedia.utils.K
 import com.rivaldomathindas.sembakopedia.utils.RecyclerFormatter
 import com.rivaldomathindas.sembakopedia.utils.hideView
 import com.rivaldomathindas.sembakopedia.utils.showView
 import com.rivaldomathindas.sembakopedia.R
-import kotlinx.android.synthetic.main.fragment_my_parts_orders.*
+import kotlinx.android.synthetic.main.fragment_my_products_orders.*
 import timber.log.Timber
 
-class MyOrdersPartsFragment : BaseFragment() {
-    private lateinit var partOrdersAdapter: PartOrdersAdapter
+class MyPurchasesProductFragment : BaseFragment() {
+    private lateinit var productOrdersAdapter: ProductOrdersAdapter
     private lateinit var ordersQuery: Query
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         ordersQuery = getDatabaseReference().child(K.REQUESTS).child(getUid())
-        return inflater.inflate(R.layout.fragment_my_parts_orders, container, false)
+        return inflater.inflate(R.layout.fragment_my_products_orders, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,8 +45,8 @@ class MyOrdersPartsFragment : BaseFragment() {
         rv.itemAnimator = DefaultItemAnimator()
         rv.addItemDecoration(RecyclerFormatter.SimpleDividerItemDecoration(requireActivity()))
 
-        partOrdersAdapter = PartOrdersAdapter(requireActivity())
-        rv.adapter = partOrdersAdapter
+        productOrdersAdapter = ProductOrdersAdapter(requireActivity())
+        rv.adapter = productOrdersAdapter
         rv.showShimmerAdapter()
 
     }
@@ -83,8 +83,8 @@ class MyOrdersPartsFragment : BaseFragment() {
         }
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-            val order = p0.getValue(PartOrder::class.java)
-            partOrdersAdapter.addPartOrder(order!!)
+            val order = p0.getValue(ProductOrder::class.java)
+            productOrdersAdapter.addProductOrder(order!!)
         }
 
         override fun onChildRemoved(p0: DataSnapshot) {

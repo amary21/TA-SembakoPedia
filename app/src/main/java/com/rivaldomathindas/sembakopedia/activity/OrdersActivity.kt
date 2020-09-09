@@ -35,9 +35,9 @@ class OrdersActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
     private fun setupViewPager() {
         val adapter = PagerAdapter(supportFragmentManager, this)
-        val parts = OrdersPartsFragment()
+        val product = OrdersPartsFragment()
 
-        adapter.addAllFrags(parts)
+        adapter.addAllFrags(product)
         adapter.addAllTitles(PARTS)
 
         viewpager.adapter = adapter

@@ -2,7 +2,7 @@ package com.rivaldomathindas.sembakopedia.model
 
 import java.io.Serializable
 
-data class Part(
+data class Product(
         var id: String? = null,
         var name: String? = null,
         var number: String? = null,
