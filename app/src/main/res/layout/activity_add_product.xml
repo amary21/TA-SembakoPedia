@@ -46,21 +46,21 @@
                         android:id="@+id/info_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/primaryText"
-                        android:textSize="15sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="@string/part_info"/>
+                        android:text="@string/product_information"/>
 
                     <TextView
-                        android:id="@+id/part_title"
+                        android:id="@+id/product_name_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
-                        android:text="@string/title"/>
+                        android:text="@string/product_name"/>
 
                     <EditText
-                        android:id="@+id/productTitle"
+                        android:id="@+id/product_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -69,7 +69,7 @@
                         android:background="@drawable/et_background_plain"
                         android:textColor="@color/primaryText"
                         android:inputType="text"
-                        android:hint="@string/title"/>
+                        android:hint="@string/product_name"/>
 
                     <TextView
                         android:id="@+id/location_title"
@@ -151,7 +151,7 @@
                         android:background="@drawable/et_background_plain"
                         android:textColor="@color/primaryText"
                         android:inputType="textMultiLine"
-                        android:hint="@string/add_part_desc"/>
+                        android:hint="Add a description about the product..."/>
 
                 </LinearLayout>
 
@@ -175,41 +175,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/model"
-                        android:textColor="@color/primaryText"
-                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="@id/type"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="@string/part_details"/>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:weightSum="2">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawablePadding="10dp"
-                            android:textSize="15sp"
-                            android:textColor="@color/secondaryText"
-                            android:text="@string/condition"/>
-
-                        <Spinner
-                            android:id="@+id/condition"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="15sp"
-                            android:textColor="@color/primaryText"
-                            android:entries="@array/condition"/>
-
-                    </LinearLayout>
+                        android:text="@string/product_details"/>
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -227,39 +197,10 @@
                             android:drawablePadding="10dp"
                             android:textSize="15sp"
                             android:textColor="@color/secondaryText"
-                            android:text="@string/category"/>
+                            android:text="@string/product_category"/>
 
                         <Spinner
                             android:id="@+id/category"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="15sp"
-                            android:textColor="@color/primaryText"
-                            android:entries="@array/category"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:weightSum="2">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawablePadding="10dp"
-                            android:textSize="15sp"
-                            android:textColor="@color/secondaryText"
-                            android:text="@string/vehicle_make"/>
-
-                        <Spinner
-                            android:id="@+id/make"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -285,10 +226,10 @@
                             android:drawablePadding="10dp"
                             android:textSize="15sp"
                             android:textColor="@color/secondaryText"
-                            android:text="@string/vehicle_model"/>
+                            android:text="@string/type_of_product"/>
 
                         <Spinner
-                            android:id="@+id/model"
+                            android:id="@+id/type"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -298,38 +239,7 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_gravity="center_vertical"
-                        android:weightSum="2">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:drawablePadding="10dp"
-                            android:textSize="15sp"
-                            android:textColor="@color/secondaryText"
-                            android:text="@string/part_number"/>
-
-                        <EditText
-                            android:id="@+id/number"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:padding="10dp"
-                            android:textSize="15sp"
-                            android:background="@drawable/et_background_plain"
-                            android:textColor="@color/primaryText"
-                            android:inputType="text"
-                            android:hint="@string/part_number"
-                            tools:ignore="TextFields" />
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -353,8 +263,8 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:textColor="@color/primaryText"
-                        android:textSize="15sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:text="@string/upload_photos"/>
 
@@ -378,7 +288,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:scaleType="centerCrop"
-                        tools:src="@drawable/brake"/>
+                        tools:src="@drawable/ic_launcher_background"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/photosRv"
@@ -417,8 +327,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/flat_button"
                 android:textColor="@android:color/white"
-                android:text="@string/post_part"
-                tools:background="@drawable/rounded_button"/>
+                android:text="@string/post_product"
+                tools:background="@drawable/button_rounded"/>
 
         </LinearLayout>
 

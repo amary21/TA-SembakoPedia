@@ -96,8 +96,12 @@ class AddPartActivity : BaseActivity() {
         minyakLPG = resources.getStringArray(R.array.minyak_lpg)
         daging = resources.getStringArray(R.array.daging)
         susu = resources.getStringArray(R.array.susu)
+        hasilTani = resources.getStringArray(R.array.hasil_tani)
+        telur = resources.getStringArray(R.array.telur)
+        garam = resources.getStringArray(R.array.garam)
+        lainnya = resources.getStringArray(R.array.lainnya)
 
-        make.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        category.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -131,7 +135,7 @@ class AddPartActivity : BaseActivity() {
         val spinnerArrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, models)
         spinnerArrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item )
 
-        model.adapter = spinnerArrayAdapter
+        type.adapter = spinnerArrayAdapter
     }
 
     //Memilih foto dari gallery
@@ -151,7 +155,6 @@ class AddPartActivity : BaseActivity() {
                 .thumbnailScale(0.85f)
                 .imageEngine(MyGlideEngine())
                 .forResult(IMAGE_PICKER)
-
     }
 
     //Mengambil foto
@@ -184,7 +187,7 @@ class AddPartActivity : BaseActivity() {
             return
         }
 
-        if(!AppUtils.validated(productTitle, location, price, desc, quantity)) {
+        if(!AppUtils.validated(product_name, location, price, desc, quantity)) {
             toast(getString(R.string.please_fill_all_fields))
             return
         }
@@ -236,17 +239,15 @@ class AddPartActivity : BaseActivity() {
         showLoading(getString(R.string.uploading_product_details))
 
         product.id = KEY
-        product.name = productTitle.text.toString().trim()
+        product.name = product_name.text.toString().trim()
         product.sellerId = getUid()
         product.sellerName = prefs[K.NAME]
         product.time = System.currentTimeMillis()
         product.price = price.text.toString().trim()
         product.quantity = (quantity.text.toString()).toInt()
-        product.make = make.selectedItem.toString()
-        product.model = model.selectedItem.toString()
-        product.location = location.text.toString().trim()
-        product.number = number.text.toString().trim()
         product.category = category.selectedItem.toString()
+        product.type = type.selectedItem.toString()
+        product.location = location.text.toString().trim()
         product.description = desc.text.toString().trim()
 
         getFirestore().collection(K.PRODUCTS).document(KEY).set(product)

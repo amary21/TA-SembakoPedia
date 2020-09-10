@@ -11,10 +11,6 @@ import kotlinx.android.synthetic.main.activity_my_orders.*
 
 class MyPurchases : BaseActivity(), TabLayout.OnTabSelectedListener {
 
-    companion object {
-        private const val TITLE = "SPARE PARTS"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orders)
@@ -27,7 +23,7 @@ class MyPurchases : BaseActivity(), TabLayout.OnTabSelectedListener {
         val product = MyPurchasesProductFragment()
 
         adapter.addAllFrags(product)
-        adapter.addAllTitles(TITLE)
+        adapter.addAllTitles(getString(R.string.my_purchases))
 
         viewpager.adapter = adapter
         viewpager.offscreenPageLimit = 1

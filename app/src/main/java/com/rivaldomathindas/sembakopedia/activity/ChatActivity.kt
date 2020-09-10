@@ -19,7 +19,6 @@ import com.rivaldomathindas.sembakopedia.utils.PreferenceHelper.get
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.utils.*
 import kotlinx.android.synthetic.main.activity_chat.*
-import timber.log.Timber
 
 class ChatActivity : BaseActivity(), View.OnClickListener {
     private lateinit var messagesAdapter: MessagesAdapter
@@ -65,7 +64,7 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         rv.adapter = messagesAdapter
     }
 
-    // listens for changes on message EditText
+    //memeriksa perubahan pada edittext
     private fun editTextListener() {
         message.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -90,9 +89,9 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
+    //memeriksa pesan
     private val messagesValueListener = object : ValueEventListener {
         override fun onCancelled(p0: DatabaseError) {
-            Timber.e("Error fetching messages: $p0")
             noMessages()
         }
 
@@ -105,18 +104,16 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    //implementasi childeventlistener
     private val messagesChildListener = object : ChildEventListener {
 
         override fun onCancelled(p0: DatabaseError) {
-            Timber.e("Child listener cancelled: $p0")
         }
 
         override fun onChildMoved(p0: DataSnapshot, p1: String?) {
-            Timber.e("Message moved: ${p0.key}")
         }
 
         override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-            Timber.e("Message changed: ${p0.key}")
         }
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -125,11 +122,10 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         }
 
         override fun onChildRemoved(p0: DataSnapshot) {
-            Timber.e("Message removed: ${p0.key}")
         }
     }
 
-    // Upload message
+    //mengirim pesan
     private fun sendMessage() {
         val ref = getDatabaseReference().child(K.MESSAGES).child(chatId)
         val key = ref.push().key
@@ -147,7 +143,7 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    // Updates Chat object in chats
+    //memperbaharui isi obrolan
     private fun updateChats() {
         val chat = Chat()
         chat.id = chatId
@@ -162,16 +158,19 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         getDatabaseReference().child(K.CHATS).child(uid2).child(chatId).setValue(chat)
     }
 
+    //jika ada pesan
     private fun hasMessages() {
         empty?.hideView()
         rv?.showView()
     }
 
+    //jika tidak ada pesan
     private fun noMessages() {
         rv?.hideView()
         empty?.showView()
     }
 
+    //override fungsi dari onclick
     override fun onClick(v: View?) {
         when(v?.id) {
             send.id -> if (hasTyped) {
@@ -181,6 +180,7 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    //override fungsi dari onoptionsitemselected
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             android.R.id.home -> onBackPressed()
@@ -189,11 +189,13 @@ class ChatActivity : BaseActivity(), View.OnClickListener {
         return true
     }
 
+    //override fungsi dari tombol back
     override fun onBackPressed() {
         super.onBackPressed()
         AppUtils.animateEnterLeft(this)
     }
 
+    //override fungsi dari ondestroy
     override fun onDestroy() {
         super.onDestroy()
         chatQuery.removeEventListener(messagesChildListener)

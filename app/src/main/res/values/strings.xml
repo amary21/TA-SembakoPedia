@@ -59,9 +59,22 @@
     <string name="please_select_atleast_2_images">Please select atleast 2 images...</string>
     <string name="please_fill_all_fields">Please fill all fields!</string>
     <string name="uploading_images">Uploading images...</string>
-    <string name="uploading_product_details">Uploading part details...</string>
-    <string name="product_successfully_uploaded">Part successfully uploaded</string>
-    <string name="error_uploading_product">Error uploading part. Please try again</string>
+    <string name="uploading_product_details">Uploading product details...</string>
+    <string name="product_successfully_uploaded">Product successfully uploaded</string>
+    <string name="error_uploading_product">Error uploading product. Please try again</string>
+    <string name="make_order">Make order</string>
+    <string name="delete">DELETE</string>
+    <string name="deleted">deleted</string>
+    <string name="making_order">Making order...</string>
+    <string name="error_making_order">Error making order. Please try again</string>
+    <string name="product_information">Product Information</string>
+    <string name="product_name">Product name</string>
+    <string name="product_details">Product Details</string>
+    <string name="type_of_product">Type of product</string>
+    <string name="product_category">Product category</string>
+    <string name="post_product">Post Product</string>
+    <string name="available_quantity">Available Quantity</string>
+    <string name="unit_price">Unit Price</string>
 
     <string-array name="makes">
         <item name="beras">Beras</item>
@@ -77,46 +90,59 @@
     </string-array>
 
     <string-array name="beras">
-        <item name="superwin">Superwin</item>
-        <item name="temo">Temo</item>
-        <item name="nurdin">Nurdin</item>
-        <item name="pulo">Pulo</item>
-        <item name="temo">Temo</item>
-        <item name="lainnya">Lainnya</item>
+        <item name="superwin">Beras superwin</item>
+        <item name="temo">Beras temo</item>
+        <item name="nurdin">Beras nurdin</item>
+        <item name="pulo">Beras pulo</item>
+        <item name="lainnya">Beras lainnya</item>
     </string-array>
 
     <string-array name="gula">
-        <item name="lokal">Lokal</item>
-        <item name="premium">Premium</item>
+        <item name="lokal">Gula lokal</item>
+        <item name="premium">Gula premium</item>
     </string-array>
 
     <string-array name="susu">
-        <item name="umum">Untuk umum</item>
-        <item name="ibu_hamil">Untuk ibu hamil</item>
-        <item name="bayi">Untuk bayi</item>
+        <item name="umum">Susu umum</item>
+        <item name="ibu_hamil">Susu ibu hamil</item>
+        <item name="bayi">Susu bayi</item>
     </string-array>
 
     <string-array name="minyak_goreng">
-        <item name="lokal">Lokal</item>
-        <item name="premium">Premium</item>
+        <item name="lokal">Minyak goreng lokal</item>
+        <item name="premium">Minyak goreng premium</item>
     </string-array>
 
     <string-array name="minyak_lpg">
-        <item name="Minyak tanah">Minyak tanah</item>
-        <item name="Gas LPG">Gas LPG</item>
+        <item name="minyak tanah">Minyak tanah</item>
+        <item name="gas_lpg">Gas LPG</item>
     </string-array>
 
     <string-array name="daging">
-        <item name="Ayam">Ayam</item>
-        <item name="Sapi">Sapi</item>
-        <item name="Kambing">Kambing</item>
+        <item name="ayam">Daging ayam</item>
+        <item name="sapi">Daging sapi</item>
+        <item name="kambing">Daging kambing</item>
     </string-array>
 
+    <string-array name="hasil_tani">
+        <item name="jagung">Jagung</item>
+        <item name="wortel">Wortel</item>
+        <item name="terong">Terong</item>
+    </string-array>
 
+    <string-array name="telur">
+        <item name="ayam">Telur ayam</item>
+        <item name="bebek">Telur bebek</item>
+    </string-array>
 
+    <string-array name="garam">
+        <item name="lokal">Garam lokal</item>
+        <item name="premium">Garam premium</item>
+    </string-array>
 
-
-
+    <string-array name="lainnya">
+        <item name="lainnya">lainnya</item>
+    </string-array>
 
 
 
@@ -221,11 +247,7 @@
     <string name="what_time_would_you_like_to_book">What time would you like to book?</string>
     <string name="lastname">Last name</string>
     <string name="firstname">First name</string>
-    <string name="make_order">Make order</string>
-    <string name="delete">DELETE</string>
-    <string name="deleted">deleted</string>
-    <string name="making_order">Making order...</string>
-    <string name="error_making_order">Error making order. Please try again</string>
+
 
 
     <string-array name="holder">

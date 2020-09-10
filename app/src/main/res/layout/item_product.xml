@@ -39,7 +39,7 @@
                     android:scaleType="centerCrop"
                     android:background="@color/light_background"
                     app:imageUrl="@{product.image}"
-                    tools:src="@drawable/fozzy"/>
+                    tools:src="@drawable/ic_launcher_background"/>
 
             </com.rivaldomathindas.sembakopedia.utils.SquareLayout>
 
@@ -59,7 +59,7 @@
                     android:maxLines="2"
                     android:ellipsize="end"
                     android:text="@{product.name}"
-                    tools:text="Brembo brakes"/>
+                    tools:text="Beras"/>
 
                 <TextView
                     android:id="@+id/price"
@@ -67,8 +67,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondaryText"
                     android:maxLines="1"
-                    android:text="@{`KES ` + product.price}"
-                    tools:text="KES 53000"/>
+                    android:text="@{`Rp. ` + product.price}"
+                    tools:text="Rp 10.000"/>
 
             </LinearLayout>
 

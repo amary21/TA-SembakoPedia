@@ -54,6 +54,118 @@
     <string name="cancel">Batal</string>
     <string name="yes">Ya</string>
 
+    <string name="upload_products">Unggah produk</string>
+    <string name="please_connect_to_the_internet">Tidak ada jaringan internet!</string>
+    <string name="please_select_atleast_2_images">Pilih setidaknya 2 foto...</string>
+    <string name="please_fill_all_fields">Isi semua kolom yang kosong!</string>
+    <string name="uploading_images">Mengunggah foto...</string>
+    <string name="uploading_product_details">Mengunggah detail produk...</string>
+    <string name="product_successfully_uploaded">Produk telah diunggah</string>
+    <string name="error_uploading_product">Gagal mengunggah produk. Coba lagi</string>
+    <string name="make_order">Membuat pesanan</string>
+    <string name="delete">HAPUS</string>
+    <string name="deleted">terhapus</string>
+    <string name="making_order">Sedang memesan...</string>
+    <string name="error_making_order">Gagal memesan. Coba lagi</string>
+    <string name="product_information">Informasi produk</string>
+    <string name="product_name">Nama produk</string>
+    <string name="product_details">Detail produk</string>
+    <string name="type_of_product">Tipe produk</string>
+    <string name="product_category">Kategori produk</string>
+    <string name="post_product">Unggah produk</string>
+    <string name="available_quantity">Jumlah tersedia</string>
+    <string name="unit_price">Harga</string>
+
+    <string-array name="makes">
+        <item name="beras">Beras</item>
+        <item name="gula">Gula</item>
+        <item name="minyak_goreng">Minyak Goreng</item>
+        <item name="daging">Daging</item>
+        <item name="minyak_lpg">Minyak Tanah dan Gas LPG</item>
+        <item name="susu">Susu</item>
+        <item name="hasil_tani">Hasil tani</item>
+        <item name="telur">Telur</item>
+        <item name="garam">Garam</item>
+        <item name="lainnya">Lainnya</item>
+    </string-array>
+
+    <string-array name="beras">
+        <item name="superwin">Beras superwin</item>
+        <item name="temo">Beras temo</item>
+        <item name="nurdin">Beras nurdin</item>
+        <item name="pulo">Beras pulo</item>
+        <item name="lainnya">Beras lainnya</item>
+    </string-array>
+
+    <string-array name="gula">
+        <item name="lokal">Gula lokal</item>
+        <item name="premium">Gula premium</item>
+    </string-array>
+
+    <string-array name="susu">
+        <item name="umum">Susu umum</item>
+        <item name="ibu_hamil">Susu ibu hamil</item>
+        <item name="bayi">Susu bayi</item>
+    </string-array>
+
+    <string-array name="minyak_goreng">
+        <item name="lokal">Minyak goreng lokal</item>
+        <item name="premium">Minyak goreng premium</item>
+    </string-array>
+
+    <string-array name="minyak_lpg">
+        <item name="minyak tanah">Minyak tanah</item>
+        <item name="gas_lpg">Gas LPG</item>
+    </string-array>
+
+    <string-array name="daging">
+        <item name="ayam">Daging ayam</item>
+        <item name="sapi">Daging sapi</item>
+        <item name="kambing">Daging kambing</item>
+    </string-array>
+
+    <string-array name="hasil_tani">
+        <item name="jagung">Jagung</item>
+        <item name="wortel">Wortel</item>
+        <item name="terong">Terong</item>
+    </string-array>
+
+    <string-array name="telur">
+        <item name="ayam">Telur ayam</item>
+        <item name="bebek">Telur bebek</item>
+    </string-array>
+
+    <string-array name="garam">
+        <item name="lokal">Garam lokal</item>
+        <item name="premium">Garam premium</item>
+    </string-array>
+
+    <string-array name="lainnya">
+        <item name="lainnya">lainnya</item>
+    </string-array>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
