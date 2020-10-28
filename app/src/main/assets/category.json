@@ -1,0 +1,127 @@
+[
+  {
+    "category": "Beras",
+    "type": [
+      {
+        "name": "Beras superwin"
+      },
+      {
+        "name": "Beras temo"
+      },
+      {
+        "name": "Beras nurdin"
+      },
+      {
+        "name": "Beras pulo"
+      },
+      {
+        "name": "Beras lainnya"
+      }
+    ]
+  },
+  {
+    "category": "Gula",
+    "type": [
+      {
+        "name": "Gula lokal"
+      },
+      {
+        "name": "Gula premium"
+      }
+    ]
+  },
+  {
+    "category": "Minyak Goreng",
+    "type": [
+      {
+        "name": "Minyak goreng lokal"
+      },
+      {
+        "name": "Minyak goreng premium"
+      }
+    ]
+  },
+  {
+    "category": "Daging",
+    "type": [
+      {
+        "name": "Daging ayam"
+      },
+      {
+        "name": "Daging sapi"
+      },
+      {
+        "name": "Daging kambing"
+      }
+    ]
+  },
+  {
+    "category": "Minyak Tanah dan Gas LPG",
+    "type": [
+      {
+        "name": "Minyak Tanah"
+      },
+      {
+        "name": "Gas LPG"
+      }
+    ]
+  },
+  {
+    "category": "Susu",
+    "type": [
+      {
+        "name": "Susu umum"
+      },
+      {
+        "name": "Susu ibu hamil"
+      },
+      {
+        "name": "Susu Bayi"
+      }
+    ]
+  },
+  {
+    "category": "Hasil Tani",
+    "type": [
+      {
+        "name": "Jagung"
+      },
+      {
+        "name": "Wortel"
+      },
+      {
+        "name": "Terong"
+      }
+    ]
+  },
+  {
+    "category": "Telur",
+    "type": [
+      {
+        "name": "Telur ayam"
+      },
+      {
+        "name": "Telur bebek"
+      }
+    ]
+  },
+  {
+    "category": "Garam",
+    "type": [
+      {
+        "name": "Garam lokal"
+      },
+      {
+        "name": "Garam premium"
+      }
+    ]
+  },
+  {
+    "category": "Lainnya",
+    "type": [
+      {
+        "name": "Lainnya"
+      }
+    ]
+  }
+]

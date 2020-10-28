@@ -104,6 +104,9 @@ dependencies {
     implementation 'com.github.captain-miao:optroundcardview:1.0.0'
     implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
     implementation 'com.synnapps:carouselview:0.1.4'
+
+    //MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -47,5 +47,9 @@ object K {
     const val PHONE = "phone"
     const val TOKEN = "token"
 
+    // Statistics
+    const val CATEGORY_PRODUCT = "category_product"
+    const val TYPE_PRODUCT = "type_product"
+
 
 }

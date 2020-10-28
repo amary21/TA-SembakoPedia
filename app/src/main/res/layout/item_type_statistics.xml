@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="com.rivaldomathindas.sembakopedia.model.Type" />
+
+        <variable
+            name="callback"
+            type="com.rivaldomathindas.sembakopedia.callbacks.TypeCallback" />
+
+        <variable
+            name="totalProduct"
+            type="Integer" />
+
+    </data>
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:optRoundCardBackgroundColor="@android:color/white"
+        app:optRoundCardCornerRadius="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="8dp">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/mpLineChartTypeStatistics"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tvType"/>
+
+            <TextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{type.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                tools:text="Beras Superwin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_margin="16dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:padding="8dp"
+                android:text="@{totalProduct.toString() + ` Product`}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="Total Product"/>
+
+        </RelativeLayout>
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+
+</layout>

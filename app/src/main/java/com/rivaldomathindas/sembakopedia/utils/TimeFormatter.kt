@@ -17,6 +17,7 @@ class TimeFormatter {
     private var normalYearFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     private var reportTime = SimpleDateFormat("MMM dd, yyy", Locale.getDefault())
     private var saveFormat = SimpleDateFormat("yyyyMMdd-mmss", Locale.getDefault())
+    private var dayWithMonthFormat = SimpleDateFormat("d/MM", Locale.getDefault())
 
     fun getTimeStamp(time: Long): String {
         val currentTime = System.currentTimeMillis()
@@ -82,6 +83,10 @@ class TimeFormatter {
 
     fun getReportTime(millis: Long): String {
         return reportTime.format(millis)
+    }
+
+    fun getDayWithMonth(millis: Long): String {
+        return dayWithMonthFormat.format(millis)
     }
 
     private fun isThisYear(millis: Long): Boolean {

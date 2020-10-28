@@ -145,13 +145,6 @@
     </string-array>
 
 
-
-
-
-
-
-
-
     <string name="dot">\u2022</string>
     <string name="sample_features">2004 \u2022 48000km \u2022 Manual</string>
     <string name="sample_description">
@@ -249,11 +242,9 @@
     <string name="firstname">First name</string>
 
 
-
     <string-array name="holder">
         <item name="category">Please select</item>
     </string-array>
-
 
 
     <string-array name="condition">

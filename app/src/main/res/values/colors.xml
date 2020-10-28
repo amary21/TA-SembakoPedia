@@ -37,6 +37,8 @@
     <color name="bgMainColor2">#F9FED5</color>
     <color name="bgMainColor3">#E2FECE</color>
 
+    <color name="chartColor">#6cf4ac</color>
+
 
     <color name="textInputLayout">#96ffffff</color>
 </resources>
