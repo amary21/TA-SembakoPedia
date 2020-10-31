@@ -3,12 +3,11 @@ package com.rivaldomathindas.sembakopedia.fragment
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
@@ -21,7 +20,6 @@ import com.rivaldomathindas.sembakopedia.model.DetailProduct
 import com.rivaldomathindas.sembakopedia.utils.K.STATISTIC_PRODUCT
 import com.rivaldomathindas.sembakopedia.utils.TimeFormatter
 import kotlinx.android.synthetic.main.fragment_stats_all.*
-import kotlinx.android.synthetic.main.item_type_statistics.view.*
 
 class StatsAllFragment : Fragment() {
     private var paramStats: DetailProduct? = null

@@ -97,7 +97,34 @@ class TimeFormatter {
         return dayWithMonthFormat.format(millis)
     }
 
-    fun getCurrentWeekOfMonth(): Int {
+    fun isThisWeek(millis: Long): String {
+        var date = ""
+        if (getWeekFromTimeStamp(millis) == getCurrentWeekOfMonth()){
+            date = dayWithMonthFormat.format(millis)
+        }
+
+        return date
+    }
+
+    fun isThisMont(millis: Long) : String {
+        var date = ""
+        if (getMonthFromTimeStamp(millis) == getCurrentMonthOfYear()){
+            date = dayWithMonthFormat.format(millis)
+        }
+
+        return date
+    }
+
+    private fun getCurrentMonthOfYear(): Int{
+        val currentDate = Date()
+        return monthOnly.format(currentDate).toInt()
+    }
+
+    private fun getMonthFromTimeStamp(millis: Long): Int{
+        return monthOnly.format(millis).toInt()
+    }
+
+    private fun getCurrentWeekOfMonth(): Int {
         val currentDate = Date()
         val date = dateOnly.format(currentDate).toInt()
         val month = monthOnly.format(currentDate).toInt()
@@ -108,7 +135,7 @@ class TimeFormatter {
         return calendar.get(Calendar.WEEK_OF_MONTH)
     }
 
-    fun getWeekFromTimeStamp(millis: Long): Int {
+    private fun getWeekFromTimeStamp(millis: Long): Int {
         val date = dateOnly.format(millis).toInt()
         val month = monthOnly.format(millis).toInt()
         val year = yearOnly.format(millis).toInt()
@@ -116,15 +143,6 @@ class TimeFormatter {
         calendar.set(year, month - 1, date)
         calendar.minimalDaysInFirstWeek = 1
         return calendar.get(Calendar.WEEK_OF_MONTH)
-    }
-
-    fun getCurrentMonthOfYear(): Int{
-        val currentDate = Date()
-        return monthOnly.format(currentDate).toInt()
-    }
-
-    fun getMonthFromTimeStamp(millis: Long): Int{
-        return monthOnly.format(millis).toInt()
     }
 
     private fun isThisYear(millis: Long): Boolean {
