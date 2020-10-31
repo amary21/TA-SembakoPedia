@@ -50,6 +50,7 @@ object K {
     // Statistics
     const val CATEGORY_PRODUCT = "category_product"
     const val TYPE_PRODUCT = "type_product"
+    const val STATISTIC_PRODUCT = "statistic_product"
 
 
 }

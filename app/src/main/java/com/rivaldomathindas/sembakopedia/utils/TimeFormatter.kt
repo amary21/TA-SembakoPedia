@@ -7,6 +7,7 @@ import com.kizitonwose.time.seconds
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class TimeFormatter {
 
     private var timeFormat = SimpleDateFormat("h:mm a", Locale.getDefault())
@@ -18,6 +19,9 @@ class TimeFormatter {
     private var reportTime = SimpleDateFormat("MMM dd, yyy", Locale.getDefault())
     private var saveFormat = SimpleDateFormat("yyyyMMdd-mmss", Locale.getDefault())
     private var dayWithMonthFormat = SimpleDateFormat("d/MM", Locale.getDefault())
+    private var dateOnly = SimpleDateFormat("d", Locale.getDefault())
+    private var monthOnly = SimpleDateFormat("M", Locale.getDefault())
+    private var yearOnly = SimpleDateFormat("yyyy", Locale.getDefault())
 
     fun getTimeStamp(time: Long): String {
         val currentTime = System.currentTimeMillis()
@@ -25,7 +29,11 @@ class TimeFormatter {
 
         return when {
             timeDifference <= 10.seconds.inMilliseconds.longValue -> "Just now"
-            timeDifference <= 24.hours.inMilliseconds.longValue -> DateUtils.getRelativeTimeSpanString(time, currentTime, 0).toString()
+            timeDifference <= 24.hours.inMilliseconds.longValue -> DateUtils.getRelativeTimeSpanString(
+                time,
+                currentTime,
+                0
+            ).toString()
             timeDifference <= 168.hours.inMilliseconds.longValue -> getTimeWeek(time)
             else -> if (isThisYear(time)) getDetailDate(time) else getFullFormat(time)
         }
@@ -87,6 +95,36 @@ class TimeFormatter {
 
     fun getDayWithMonth(millis: Long): String {
         return dayWithMonthFormat.format(millis)
+    }
+
+    fun getCurrentWeekOfMonth(): Int {
+        val currentDate = Date()
+        val date = dateOnly.format(currentDate).toInt()
+        val month = monthOnly.format(currentDate).toInt()
+        val year = yearOnly.format(currentDate).toInt()
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month - 1, date)
+        calendar.minimalDaysInFirstWeek = 1
+        return calendar.get(Calendar.WEEK_OF_MONTH)
+    }
+
+    fun getWeekFromTimeStamp(millis: Long): Int {
+        val date = dateOnly.format(millis).toInt()
+        val month = monthOnly.format(millis).toInt()
+        val year = yearOnly.format(millis).toInt()
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month - 1, date)
+        calendar.minimalDaysInFirstWeek = 1
+        return calendar.get(Calendar.WEEK_OF_MONTH)
+    }
+
+    fun getCurrentMonthOfYear(): Int{
+        val currentDate = Date()
+        return monthOnly.format(currentDate).toInt()
+    }
+
+    fun getMonthFromTimeStamp(millis: Long): Int{
+        return monthOnly.format(millis).toInt()
     }
 
     private fun isThisYear(millis: Long): Boolean {

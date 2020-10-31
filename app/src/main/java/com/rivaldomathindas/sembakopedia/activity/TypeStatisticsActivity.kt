@@ -10,6 +10,7 @@ import com.google.firebase.firestore.Query
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.adapter.TypeAdapter
 import com.rivaldomathindas.sembakopedia.callbacks.TypeCallback
+import com.rivaldomathindas.sembakopedia.model.DetailProduct
 import com.rivaldomathindas.sembakopedia.model.Product
 import com.rivaldomathindas.sembakopedia.model.ProductCategory
 import com.rivaldomathindas.sembakopedia.model.Type
@@ -34,7 +35,6 @@ class TypeStatisticsActivity : BaseActivity(), TypeCallback {
     private fun initViews() {
         rvType.setHasFixedSize(true)
         rvType.layoutManager = LinearLayoutManager(this)
-//        rvType.addItemDecoration(RecyclerFormatter.SimpleDividerItemDecoration(requireActivity()))
         rvType.itemAnimator = DefaultItemAnimator()
         (rvType.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
 
@@ -87,9 +87,9 @@ class TypeStatisticsActivity : BaseActivity(), TypeCallback {
         AppUtils.animateEnterLeft(this)
     }
 
-    override fun onClick(v: View, type: Type) {
+    override fun onClick(v: View, detailProduct: DetailProduct) {
         val i = Intent(this, DetailStatisticsActivity::class.java)
-        i.putExtra(K.TYPE_PRODUCT, type)
+        i.putExtra(K.TYPE_PRODUCT, detailProduct)
         startActivity(i)
         AppUtils.animateFadein(this)
     }

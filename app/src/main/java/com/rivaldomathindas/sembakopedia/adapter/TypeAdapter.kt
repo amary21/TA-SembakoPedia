@@ -15,6 +15,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.rivaldomathindas.sembakopedia.R
 import com.rivaldomathindas.sembakopedia.callbacks.TypeCallback
 import com.rivaldomathindas.sembakopedia.databinding.ItemTypeStatisticsBinding
+import com.rivaldomathindas.sembakopedia.model.DetailProduct
 import com.rivaldomathindas.sembakopedia.model.Product
 import com.rivaldomathindas.sembakopedia.model.Type
 import com.rivaldomathindas.sembakopedia.utils.TimeFormatter
@@ -138,11 +139,12 @@ class TypeAdapter(private val callback: TypeCallback) :
             // custom chart
             itemView.mpLineChartTypeStatistics.setBackgroundColor(Color.WHITE)
             itemView.mpLineChartTypeStatistics.setGridBackgroundColor(Color.WHITE)
+            itemView.mpLineChartTypeStatistics.description.isEnabled = false
+            itemView.mpLineChartTypeStatistics.axisRight.setDrawLabels(false)
             itemView.mpLineChartTypeStatistics.setDrawGridBackground(true)
             itemView.mpLineChartTypeStatistics.setDrawBorders(true)
-            itemView.mpLineChartTypeStatistics.description.isEnabled = false
             itemView.mpLineChartTypeStatistics.setPinchZoom(false)
-            itemView.mpLineChartTypeStatistics.axisRight.setDrawLabels(false)
+            itemView.mpLineChartTypeStatistics.setTouchEnabled(false)
 
             // remove legend
             val legend = itemView.mpLineChartTypeStatistics.legend
@@ -160,6 +162,11 @@ class TypeAdapter(private val callback: TypeCallback) :
             // other view data
             binding.totalProduct = listTypeProduct?.size ?: 0
             binding.type = type
+            binding.detailProduct = listTypeProduct?.let { mappingDetailProduct(type, it) }
+        }
+
+        private fun mappingDetailProduct(type: Type, products: List<Product>): DetailProduct{
+            return DetailProduct(type, products)
         }
 
     }

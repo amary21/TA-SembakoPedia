@@ -75,6 +75,8 @@
     <string name="post_product">Unggah produk</string>
     <string name="available_quantity">Jumlah tersedia</string>
     <string name="unit_price">Harga</string>
+    <string name="statistic">Statistik %1$s</string>
+    <string name="prediction">Prediksi %1$s</string>
 
     <string-array name="makes">
         <item name="beras">Beras</item>

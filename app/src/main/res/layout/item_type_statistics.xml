@@ -10,6 +10,11 @@
             type="com.rivaldomathindas.sembakopedia.model.Type" />
 
         <variable
+            name="detailProduct"
+            type="com.rivaldomathindas.sembakopedia.model.DetailProduct" />
+
+
+        <variable
             name="callback"
             type="com.rivaldomathindas.sembakopedia.callbacks.TypeCallback" />
 
@@ -23,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:onClick="@{(v) -> callback.onClick(v, detailProduct)}"
         app:optRoundCardBackgroundColor="@android:color/white"
         app:optRoundCardCornerRadius="3dp">
 
@@ -35,10 +41,10 @@
                 android:id="@+id/mpLineChartTypeStatistics"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/tvType"/>
+                android:layout_below="@+id/tvStatistics"/>
 
             <TextView
-                android:id="@+id/tvType"
+                android:id="@+id/tvStatistics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{type.name}"
