@@ -125,7 +125,6 @@ class TypeAdapter(private val callback: TypeCallback) :
             lineDataSets.mode = LineDataSet.Mode.CUBIC_BEZIER
             lineDataSets.axisDependency = YAxis.AxisDependency.LEFT
             lineDataSets.color = itemView.context.getColor(R.color.chartColor)
-//            lineDataSets.lineWidth = 3f
             lineDataSets.fillAlpha = 255
             lineDataSets.setDrawFilled(true)
             lineDataSets.fillColor = itemView.context.getColor(R.color.chartColor)
@@ -153,9 +152,6 @@ class TypeAdapter(private val callback: TypeCallback) :
             // add cubic chart
             val xAxis = itemView.mpLineChartTypeStatistics.xAxis
             xAxis.position = XAxis.XAxisPosition.BOTTOM
-//            xAxis.setDrawAxisLine(true)
-//            xAxis.setDrawGridLines(false)
-//            xAxis.setDrawLabels(true)
             xAxis.labelCount = labels.size
             xAxis.valueFormatter = IndexAxisValueFormatter(labels)
 

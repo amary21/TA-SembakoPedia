@@ -4,6 +4,7 @@ import android.text.format.DateUtils
 import android.util.Log
 import com.kizitonwose.time.hours
 import com.kizitonwose.time.seconds
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,6 +17,7 @@ class TimeFormatter {
     private var detailFormat = SimpleDateFormat("dd MMM, h:mm a", Locale.getDefault())
     private var simpleYearFormat = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
     private var normalYearFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private var secondYearFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private var reportTime = SimpleDateFormat("MMM dd, yyy", Locale.getDefault())
     private var saveFormat = SimpleDateFormat("yyyyMMdd-mmss", Locale.getDefault())
     private var dayWithMonthFormat = SimpleDateFormat("d/MM", Locale.getDefault())
@@ -91,6 +93,25 @@ class TimeFormatter {
 
     fun getReportTime(millis: Long): String {
         return reportTime.format(millis)
+    }
+
+    fun getNormalSecondYear(millis: Long): String {
+        return secondYearFormat.format(millis)
+    }
+
+    fun getNextDay(dateOfYear: String, addDay: Int): String {
+        val calendar = Calendar.getInstance()
+        val inputDate = secondYearFormat.parse(dateOfYear)
+        try {
+            if (inputDate != null)
+                calendar.time = inputDate
+        }catch (e: ParseException){
+            e.printStackTrace()
+        }
+
+        calendar.add(Calendar.DATE, addDay)
+        val resultDate = Date(calendar.timeInMillis)
+        return dayWithMonthFormat.format(resultDate)
     }
 
     fun getDayWithMonth(millis: Long): String {
